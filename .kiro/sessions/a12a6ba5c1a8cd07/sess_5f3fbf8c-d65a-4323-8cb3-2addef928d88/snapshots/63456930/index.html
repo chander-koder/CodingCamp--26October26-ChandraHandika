@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A minimalist productivity dashboard with focus timer, to-do list, and quick links">
+    <title>Minimalist Life Dashboard</title>
+    
+    <!-- Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        'orange': {
+                            500: '#f97316'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="h-full bg-white dark:bg-neutral-950 text-black dark:text-white transition-colors duration-300">
+    <!-- Theme Toggle -->
+    <div class="absolute top-6 right-6 z-10">
+        <button id="themeToggle" class="p-3 rounded-full hover:bg-gray-100 dark:hover:bg-neutral-800 transition-colors">
+            <svg id="sunIcon" class="w-6 h-6 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
+            </svg>
+            <svg id="moonIcon" class="w-6 h-6 block dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+            </svg>
+        </button>
+    </div>
+
+    <div class="container mx-auto px-6 py-8 max-w-7xl">
+        <!-- Greeting Section -->
+        <div class="mb-12 text-center">
+            <h1 id="greeting" class="text-4xl md:text-5xl font-light mb-4">Good Morning</h1>
+            <div id="nameDisplay" class="text-2xl md:text-3xl font-light mb-2 cursor-pointer hover:text-orange-500 transition-colors" title="Click to edit name">
+                <span id="nameText">there</span>
+            </div>
+            <div id="nameEdit" class="hidden mb-4">
+                <input type="text" id="nameInput" placeholder="Enter your name" class="px-4 py-2 border border-gray-300 dark:border-neutral-700 rounded-lg bg-white dark:bg-neutral-900 text-center focus:outline-none focus:ring-2 focus:ring-orange-500">
+                <button id="saveName" class="ml-2 px-4 py-2 bg-orange-500 text-white rounded-lg hover:bg-orange-600 transition-colors">Save</button>
+            </div>
+            <div class="text-xl md:text-2xl font-light">
+                <span id="currentTime">--:--</span>
+            </div>
+            <div class="text-lg md:text-xl font-light text-gray-600 dark:text-gray-400">
+                <span id="currentDate">-----</span>
+            </div>
+        </div>
+
+        <!-- Main Grid Layout -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+            <!-- Focus Timer (Pomodoro) -->
+            <div class="bg-gray-50 dark:bg-neutral-900 rounded-2xl p-8 shadow-sm">
+                <h2 class="text-2xl font-light mb-6 text-center">Focus Timer</h2>
+                <div class="text-center mb-6">
+                    <div id="timerDisplay" class="text-6xl md:text-7xl font-light mb-6">25:00</div>
+                    <div class="mb-4">
+                        <label class="text-sm text-gray-600 dark:text-gray-400 block mb-2">Duration (minutes)</label>
+                        <input type="number" id="timerDuration" value="25" min="1" max="120" class="w-32 px-4 py-2 border border-gray-300 dark:border-neutral-700 rounded-lg bg-white dark:bg-neutral-800 text-center focus:outline-none focus:ring-2 focus:ring-orange-500">
+                    </div>
+                </div>
+                <div class="flex justify-center gap-4">
+                    <button id="startTimer" class="px-6 py-3 bg-orange-500 text-white rounded-lg hover:bg-orange-600 transition-colors font-medium">Start</button>
+                    <button id="stopTimer" class="px-6 py-3 bg-gray-300 dark:bg-neutral-700 text-gray-800 dark:text-white rounded-lg hover:bg-gray-400 dark:hover:bg-neutral-600 transition-colors font-medium">Stop</button>
+                    <button id="resetTimer" class="px-6 py-3 bg-gray-300 dark:bg-neutral-700 text-gray-800 dark:text-white rounded-lg hover:bg-gray-400 dark:hover:bg-neutral-600 transition-colors font-medium">Reset</button>
+                </div>
+            </div>
+
+            <!-- To-Do List -->
+            <div class="bg-gray-50 dark:bg-neutral-900 rounded-2xl p-8 shadow-sm">
+                <h2 class="text-2xl font-light mb-6">To-Do List</h2>
+                <div class="mb-6">
+                    <div class="flex gap-2">
+                        <input type="text" id="taskInput" placeholder="Add a new task..." class="flex-1 px-4 py-3 border border-gray-300 dark:border-neutral-700 rounded-lg bg-white dark:bg-neutral-800 focus:outline-none focus:ring-2 focus:ring-orange-500">
+                        <button id="addTask" class="px-6 py-3 bg-orange-500 text-white rounded-lg hover:bg-orange-600 transition-colors font-medium">Add</button>
+                    </div>
+                </div>
+                <div id="taskList" class="space-y-3 max-h-96 overflow-y-auto">
+                    <!-- Tasks will be added here -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="bg-gray-50 dark:bg-neutral-900 rounded-2xl p-8 shadow-sm">
+            <h2 class="text-2xl font-light mb-6">Quick Links</h2>
+            <div class="mb-6">
+                <div class="flex flex-col md:flex-row gap-2">
+                    <input type="text" id="linkTitle" placeholder="Link title" class="flex-1 px-4 py-3 border border-gray-300 dark:border-neutral-700 rounded-lg bg-white dark:bg-neutral-800 focus:outline-none focus:ring-2 focus:ring-orange-500">
+                    <input type="url" id="linkUrl" placeholder="https://example.com" class="flex-1 px-4 py-3 border border-gray-300 dark:border-neutral-700 rounded-lg bg-white dark:bg-neutral-800 focus:outline-none focus:ring-2 focus:ring-orange-500">
+                    <button id="addLink" class="px-6 py-3 bg-orange-500 text-white rounded-lg hover:bg-orange-600 transition-colors font-medium">Add Link</button>
+                </div>
+            </div>
+            <div id="linkList" class="flex flex-wrap gap-3">
+                <!-- Links will be added here -->
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

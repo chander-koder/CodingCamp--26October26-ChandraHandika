@@ -1,0 +1,56 @@
+{
+  "schemaVersion": "1.0.0",
+  "dataModelVersion": 1,
+  "id": "sess_5f3fbf8c-d65a-4323-8cb3-2addef928d88",
+  "title": "Build Minimalist Life Dashboard",
+  "agentMode": "vibe",
+  "workspacePaths": [
+    "c:\\Users\\SETTING\\Documents\\GitHub\\CodingCamp--26October26-ChandraHandika"
+  ],
+  "rootPaths": [
+    "c:\\Users\\SETTING\\Documents\\GitHub\\CodingCamp--26October26-ChandraHandika"
+  ],
+  "createdAt": "2026-10-28T00:56:04.461Z",
+  "lastModifiedAt": "2026-10-28T02:41:54.676Z",
+  "modelId": "claude-sonnet-4.5",
+  "autopilot": false,
+  "workflowLaunch": "when-asked",
+  "contextSnapshotModelDisplay": {
+    "modelId": "claude-sonnet-4.5",
+    "display": "Claude Sonnet 4.5"
+  },
+  "semanticReviewEnabled": true,
+  "disableAutoCompaction": false,
+  "ftaEnabled": false,
+  "workflowsEnabled": false,
+  "specPlanEnabled": false,
+  "specWorkflow": "quick",
+  "specSkipClarificationEnabled": true,
+  "memoryConfig": {
+    "mode": "disabled",
+    "reflection": false
+  },
+  "memoryConfigSource": "explicit",
+  "description": "Creating a productivity dashboard with clock, Pomodoro timer, to-do list, and quick links using HTML, Tailwind CSS, and Vanilla JavaScript.",
+  "status": "idle",
+  "_meta": {
+    "kiro": {
+      "policyPreset": [
+        "edit-workspace"
+      ],
+      "shellType": "powershell",
+      "settings": {
+        "workflows": {
+          "enabled": false
+        },
+        "goal": {
+          "enabled": false
+        },
+        "memory": {
+          "mode": "disabled",
+          "reflection": false
+        }
+      }
+    }
+  }
+}

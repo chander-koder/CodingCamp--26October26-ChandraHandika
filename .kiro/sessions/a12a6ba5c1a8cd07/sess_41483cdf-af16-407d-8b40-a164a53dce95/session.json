@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "1.0.0",
+  "dataModelVersion": 1,
+  "id": "sess_41483cdf-af16-407d-8b40-a164a53dce95",
+  "title": "New Session",
+  "agentMode": "vibe",
+  "workspacePaths": [
+    "c:\\Users\\SETTING\\Documents\\GitHub\\CodingCamp--26October26-ChandraHandika"
+  ],
+  "rootPaths": [
+    "c:\\Users\\SETTING\\Documents\\GitHub\\CodingCamp--26October26-ChandraHandika"
+  ],
+  "createdAt": "2026-10-28T03:57:53.424Z",
+  "lastModifiedAt": "2026-10-28T03:57:53.608Z",
+  "workflowLaunch": "when-asked",
+  "semanticReviewEnabled": true,
+  "disableAutoCompaction": false,
+  "ftaEnabled": false,
+  "workflowsEnabled": false,
+  "specPlanEnabled": false,
+  "specWorkflow": "quick",
+  "specSkipClarificationEnabled": true,
+  "memoryConfig": {
+    "mode": "disabled",
+    "reflection": false
+  },
+  "memoryConfigSource": "explicit",
+  "_meta": {
+    "kiro": {
+      "policyPreset": [
+        "edit-workspace"
+      ],
+      "shellType": "powershell",
+      "settings": {
+        "workflows": {
+          "enabled": false
+        },
+        "goal": {
+          "enabled": false
+        },
+        "memory": {
+          "mode": "disabled",
+          "reflection": false
+        }
+      }
+    }
+  },
+  "modelId": "claude-sonnet-4.5",
+  "autopilot": true
+}
